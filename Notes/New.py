@@ -20,6 +20,7 @@ class New:
         # create time stamp for empty baseName
         now = datetime.now()
         today = now.strftime("%Y-%m-%w:%H:%M")
+        date = datetime.date.today()
 
         if baseName == 'quickNote':
             baseName = today
@@ -29,8 +30,10 @@ class New:
         # Create the file Extensions for the passed fileType
         if fileType == 'latex':
             fileExt = '.tex'
+            fileHeader = '\document{article}\n\n\\begin{document}\n\n\\author{Chaz Davis}\n\n\\maketitle\n\n'
         if fileType == 'markdown':
             fileExt = '.md'
+            fileHeader =  f'[//]: # (Created by Chaz Davis on {date})'
 
         # create the destPath for the passed path
         if path == 'NotesDir':
@@ -44,6 +47,8 @@ class New:
 
         fileName = baseName + fileExt
         os.chdir(destPath)
-        os.stat(fileName)
-        os.chmod(fileName, 0o751)
+        with open(fileName, 'a+') as f:
+            f.writelines(fileHeader)
+            os.stat(fileName)
+            os.chmod(fileName, 0o751)
         subprocess.run(['nvim', fileName])
