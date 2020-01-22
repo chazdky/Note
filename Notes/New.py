@@ -5,6 +5,7 @@ import argparse
 import os
 from os import path
 from datetime import datetime
+import subprocess
 
 Home = os.path.expandvars("$HOME")
 NotesDir = os.path.join(Home, 'Notes')
@@ -41,6 +42,8 @@ class New:
         if path == 'code':
             destPath = os.path.join(NotesDir, 'CodeIdeas')
 
-
-
-        print(f'You\'d like to create a new note named {baseName}{fileExt} in {destPath}')
+        fileName = baseName + fileExt
+        os.chdir(destPath)
+        os.stat(fileName)
+        os.chmod(fileName, 0o751)
+        subprocess.run(['nvim', fileName])

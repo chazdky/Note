@@ -14,7 +14,6 @@ class Open:
         Home = os.path.expandvars("$HOME")
         NotesDir = os.path.join(Home, 'Notes')
 
-        print('Gathering List of notes to be opened')
         files = []
         fileNames = []
         # r=root, d=directories, f = files
@@ -28,7 +27,6 @@ class Open:
         menu= Menu(cmd)
         out = menu(fileNames)
         result = out.selected
-        print(result)
 
         for fn, fl in zip(fileNames, files):
             if result == fn:

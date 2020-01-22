@@ -23,7 +23,6 @@ class Export:
       if exportType == 'word':
          exportExt = '.docx'
 
-      print(f"you'd like to export a file with {exportExt}")
       files = []
       fileNames = []
       # r=root, d=directories, f = files
@@ -43,7 +42,6 @@ class Export:
             baseName, baseExt = os.path.splitext(fn)
             newName = baseName + exportExt
             srcDir = os.path.dirname(fl)
-            print(f"you'd like to export {baseName}{baseExt} from {srcDir} as {newName} to the {ExportDir}")
             os.chdir(srcDir)
             subprocess.run(['pandoc', '-s', fn, '-o', newName])
             shutil.move(newName, ExportDir)
