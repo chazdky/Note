@@ -4,7 +4,8 @@
 import argparse
 import os
 from os import path
-from datetime import datetime
+import datetime as dt
+from datetime import datetime as dtt
 import subprocess
 
 Home = os.path.expandvars("$HOME")
@@ -18,9 +19,9 @@ class New:
         self.fileType = fileType
 
         # create time stamp for empty baseName
-        now = datetime.now()
+        now = dtt.now()
         today = now.strftime("%Y-%m-%w:%H:%M")
-        date = datetime.date.today()
+        date = dt.date.today()
 
         if baseName == 'quickNote':
             baseName = today
