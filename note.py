@@ -30,10 +30,10 @@ def main():
 
 
     # create the arguments for the 'note export' command
-    export_parser = subparsers.add_parser('export', aliases=['ex'], help="Export a note, file will be changed from either markdown or latex to either a docx file or a pdf and then moved to the ExDocs flolder")
+    export_parser = subparsers.add_parser('export', aliases=['ex'], help="Export a note, file will be changed from either markdown or latex to either a docx file or a pdf and then moved to the Exports folder")
     exportType_parser = export_parser.add_mutually_exclusive_group()
     exportType_parser.add_argument('-p', '--pdf', action='store_const', dest="exportType", const='pdf', help="export a note to fileType pdf")
-    exportType_parser.add_argument('-w', '--word', action='store_const', dest="exportType", const='word', help="Export a note of fileType docx")
+    exportType_parser.add_argument('-w', '--word', action='store_const', dest="exportType", const='word', help="Export a note to fileType docx")
     exportType_parser.set_defaults(exportType='pdf')
 
     # create the arguments for the 'note open' command

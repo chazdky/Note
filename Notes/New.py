@@ -31,7 +31,7 @@ class New:
         # Create the file Extensions for the passed fileType
         if fileType == 'latex':
             fileExt = '.tex'
-            fileHeader = '\document{article}\n\n\\begin{document}\n\n\\author{Chaz Davis}\n\n\\maketitle\n\n'
+            fileHeader = '\documentclass{article}\n\n\\begin{document}\n\n\\author{Chaz Davis}\n\n\\date{\\today}\n\n\\maketitle\n\n'
         if fileType == 'markdown':
             fileExt = '.md'
             fileHeader =  f'[//]: # (Created by Chaz Davis on {date})'

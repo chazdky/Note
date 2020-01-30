@@ -45,5 +45,7 @@ class Export:
             os.chdir(srcDir)
             subprocess.run(['pandoc', '-s', fn, '-o', newName])
             shutil.move(newName, ExportDir)
+            if baseExt == '.tex':
+               subprocess.run('latexclean')
          else:
             continue
